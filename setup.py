@@ -1,11 +1,15 @@
 from appium import webdriver
+import os
 
 driver = None
 
-def setup_appium(device_type='android'):
-"""
-Setup the appiium for ios and android
-"""
+def setup_appium(device_type='android', app=''):
+    """
+    Setup the appium on android and iOS
+    :param device_type: type to device : android or ios
+    :param app: app location
+    :return: driver
+    """
     desired_caps = dict()
 
     if device_type.lower() == "ios":
@@ -29,7 +33,7 @@ Setup the appiium for ios and android
         driver.quit()
 
     def test_find_elements(self):
-        
+
         els = self.driver.find_elements_by_xpath('//android.widget.TextView')
         self.assertEqual('API Demos', els[0].text)
 
